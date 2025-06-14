@@ -4,7 +4,7 @@ import Hero from './page/Hero';
 import Contact from './page/Contact';
 import Footer from './page/Footer';
 
-const Home = () => {
+const Body = () => {
   return (
     <div>
       <Header />
@@ -15,4 +15,4 @@ const Home = () => {
   );
 };
 
-export default Home ;
+export default Body ;
