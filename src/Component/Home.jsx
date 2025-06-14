@@ -1,8 +1,8 @@
 import React from 'react'
-import Header from './Header'
-import Hero from './Hero'
-import Footer from './Footer'
-import Contact from './Contact'
+import Header from './page/Header'
+import Hero from './page/Hero'
+import Footer from './page/Footer'
+import Contact from './page/Contact'
 
 
 
