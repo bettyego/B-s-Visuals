@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import heroImage from '/b.JPG';
 
 function Hero() {
   return (
@@ -27,7 +26,7 @@ function Hero() {
       <div className="md:w-2/5 flex justify-center">
         <div className="overflow-hidden rounded-lg shadow-lg transform transition duration-500 hover:scale-105">
           <img
-            src={heroImage}
+            src="/b.JPG"
             alt="Graphic Design Showcase"
             className="w-full max-w-md h-auto object-cover"
           />

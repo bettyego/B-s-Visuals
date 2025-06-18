@@ -16,9 +16,9 @@ export const GRAPHIC_DESIGNS = [
     title: 'WEDI Event Flyer',
     description: 'Professional event promotion flyer'
   },
-  { 
+  {
     id: 3,
-    src: '/night party flyer.png', 
+    src: '/night-party-flyer.png',
     category: 'Flyers',
     title: 'Night Party Flyer',
     description: 'Vibrant party promotion design'
@@ -44,23 +44,23 @@ export const GRAPHIC_DESIGNS = [
     title: 'Errando Logo',
     description: 'Modern brand identity design'
   },
-  { 
+  {
     id: 7,
-    src: '/Initials Logo D.png', 
+    src: '/initials-logo-d.png',
     category: 'Logos',
     title: 'Initial D Logo',
     description: 'Elegant initial-based logo'
   },
-  { 
+  {
     id: 8,
-    src: '/Grunge Logo.png', 
+    src: '/grunge-logo.png',
     category: 'Logos',
     title: 'Grunge Style Logo',
     description: 'Artistic grunge-style branding'
   },
-  { 
+  {
     id: 9,
-    src: '/Dark Green Logo.png', 
+    src: '/dark-green-logo.png',
     category: 'Logos',
     title: 'Dark Green Logo',
     description: 'Nature-inspired brand design'
@@ -72,30 +72,30 @@ export const GRAPHIC_DESIGNS = [
     title: 'Fusion Logo',
     description: 'Modern fusion concept logo'
   },
-  { 
+  {
     id: 11,
-    src: '/Purple Abstract Logo.png', 
+    src: '/purple-abstract-logo.png',
     category: 'Logos',
     title: 'Purple Abstract Logo',
     description: 'Creative abstract design'
   },
-  { 
+  {
     id: 12,
-    src: '/Minimalist Name Logo.png', 
+    src: '/minimalist-name-logo.png',
     category: 'Logos',
     title: 'Minimalist Name Logo',
     description: 'Clean minimalist branding'
   },
-  { 
+  {
     id: 13,
-    src: '/bekkyLogo Design.png', 
+    src: '/bekky-logo-design.png',
     category: 'Logos',
     title: 'Bekky Logo Design',
     description: 'Personal brand identity'
   },
-  { 
+  {
     id: 14,
-    src: '/albert logo.png', 
+    src: '/albert-logo.png',
     category: 'Logos',
     title: 'Albert Logo',
     description: 'Professional business logo'
@@ -107,9 +107,9 @@ export const GRAPHIC_DESIGNS = [
     title: 'Advertisement Design',
     description: 'Eye-catching advertisement'
   },
-  { 
+  {
     id: 16,
-    src: '/gold logo.png', 
+    src: '/gold-logo.png',
     category: 'Logos',
     title: 'Gold Logo',
     description: 'Luxury gold-themed logo'
@@ -142,9 +142,9 @@ export const GRAPHIC_DESIGNS = [
     title: 'Electronics Flyer',
     description: 'Tech product advertisement'
   },
-  { 
+  {
     id: 21,
-    src: '/FOOD TASTE.png', 
+    src: '/food-taste.png',
     category: 'Flyers',
     title: 'Food Taste Flyer',
     description: 'Restaurant promotion design'

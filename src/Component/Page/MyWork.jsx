@@ -1,8 +1,6 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState } from 'react';
 import Header from './Header';
 import { CATEGORIES, GRAPHIC_DESIGNS } from '../../constants/portfolio';
-import { filterDesignsByCategory } from '../../utils/helpers';
-import { useImageModal } from '../../hooks/useImageModal';
 
 function MyWork() {
   const [selectedCategory, setSelectedCategory] = useState('All');
@@ -11,8 +9,8 @@ function MyWork() {
 
   const filteredDesigns =
     selectedCategory === 'All'
-      ? graphicDesigns
-      : graphicDesigns.filter((item) => item.category === selectedCategory);
+      ? GRAPHIC_DESIGNS
+      : GRAPHIC_DESIGNS.filter((item) => item.category === selectedCategory);
 
   const images = filteredDesigns.map((item) => item.src);
 
@@ -24,7 +22,7 @@ function MyWork() {
         <p className="text-center text-lg mb-8">Creative posters, flyers, social media visuals, and more.</p>
 
         <div className="flex justify-center mb-8 flex-wrap gap-3">
-          {categories.map((cat) => (
+          {CATEGORIES.map((cat) => (
             <button
               key={cat}
               onClick={() => setSelectedCategory(cat)}
@@ -42,7 +40,7 @@ function MyWork() {
         <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
           {filteredDesigns.map((item, index) => (
             <div
-              key={index}
+              key={item.id || index}
               className="cursor-pointer group relative overflow-hidden rounded-xl shadow-md hover:shadow-xl transition"
               onClick={() => {
                 setPhotoIndex(index);
@@ -51,8 +49,9 @@ function MyWork() {
             >
               <img
                 src={item.src}
-                alt=""
-                className="w-full h-[300px] object-fill transition-transform duration-300 group-hover:scale-105"
+                alt={item.title || `${item.category} design`}
+                className="w-full h-[300px] object-cover transition-transform duration-300 group-hover:scale-105"
+                loading="lazy"
               />
             </div>
           ))}
@@ -64,6 +63,7 @@ function MyWork() {
               <button
                 onClick={() => setIsOpen(false)}
                 className="absolute top-4 right-4 text-white text-2xl hover:text-gray-300 z-10"
+                aria-label="Close modal"
               >
                 ✕
               </button>
@@ -71,6 +71,7 @@ function MyWork() {
               <button
                 onClick={() => setPhotoIndex((photoIndex + images.length - 1) % images.length)}
                 className="absolute left-4 top-1/2 transform -translate-y-1/2 text-white text-3xl hover:text-gray-300 z-10"
+                aria-label="Previous image"
               >
                 ‹
               </button>
@@ -78,13 +79,14 @@ function MyWork() {
               <button
                 onClick={() => setPhotoIndex((photoIndex + 1) % images.length)}
                 className="absolute right-4 top-1/2 transform -translate-y-1/2 text-white text-3xl hover:text-gray-300 z-10"
+                aria-label="Next image"
               >
                 ›
               </button>
 
               <img
                 src={images[photoIndex]}
-                alt=""
+                alt={filteredDesigns[photoIndex]?.title || 'Design work'}
                 className="max-w-full max-h-full object-contain"
               />
 
