@@ -1,44 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import Header from './Header';
-
-const categories = ['All', 'Logos', 'Flyers', 'Social Media'];
-
-const graphicDesigns = [
-  { src: '/menu.jpg', category: 'Flyers' },
-  { src: '/WEDI.jpg', category: 'Flyers' },
-  { src: '/night party flyer.png', category: 'Flyers' },
-  { src: '/CS.jpg', category: 'Flyers' },
-  { src: '/note.jpg', category: 'Flyers' },
-  { src: '/errando.png', category: 'Logos' },
-  { src: '/Initials Logo D.png', category: 'Logos' },
-  { src: '/Grunge Logo.png', category: 'Logos' },
-  { src: '/Dark Green Logo.png', category: 'Logos' },
-  { src: '/fusion.png', category: 'Logos' },
-  { src: '/Purple Abstract Logo.png', category: 'Logos' },
-  { src: '/Minimalist Name Logo.png', category: 'Logos' },
-  { src: '/bekkyLogo Design.png', category: 'Logos' },
-  { src: '/albert logo.png', category: 'Logos' },
-  { src: '/advt.jpg', category: 'Flyers' },
-  { src: 'https://via.placeholder.com/600x800?text=Social+Media+1', category: 'Social Media' },
-  { src: '/gold logo.png', category: 'Logos' },
-  { src: '/hairlogo.png', category: 'Logos' },
-  { src: '/emmt.png', category: 'Logos' },
-  { src: '/aviation.jpg', category: 'Flyers' },
-  { src: '/electronic.jpg', category: 'Flyers' },
-  { src: '/FOOD TASTE.png', category: 'Flyers' },
-  { src: '/genlit.jpg', category: 'Flyers' },
-  { src: '/ik.png', category: 'Flyers' },
-  { src: '/jespo.jpg', category: 'Flyers' },
-  { src: '/mak.jpg', category: 'Flyers' },
-  { src: '/makeup.jpg', category: 'Flyers' },
-  { src: '/nana.png', category: 'Flyers' },
-  { src: '/package.jpg', category: 'Flyers' },
-  { src: '/pat.jpg', category: 'Flyers' },
-  { src: '/tase quest.png', category: 'Flyers' },
-  { src: '/tax.jpg', category: 'Flyers' },
-  { src: '/businesscard.png', category: 'Flyers' },
-  { src: 'https://via.placeholder.com/600x800?text=Social+Media+2', category: 'Social Media' },
-];
+import { CATEGORIES, GRAPHIC_DESIGNS } from '../../constants/portfolio';
+import { filterDesignsByCategory } from '../../utils/helpers';
+import { useImageModal } from '../../hooks/useImageModal';
 
 function MyWork() {
   const [selectedCategory, setSelectedCategory] = useState('All');
