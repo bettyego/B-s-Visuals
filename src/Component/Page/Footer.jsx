@@ -1,9 +1,10 @@
 import React from 'react';
+import { Link } from 'react-router-dom'; // ✅ Add this import
 import { FaInstagram, FaEnvelope } from 'react-icons/fa';
 
 function Footer() {
   return (
-    <footer className="bg-purple-800 text-white px-6 py-10 ">
+    <footer className="bg-purple-800 text-white px-6 py-10">
       <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center text-center md:text-left gap-6">
         
         {/* Brand Info */}
@@ -14,9 +15,9 @@ function Footer() {
 
         {/* Navigation */}
         <div className="space-x-6 text-sm">
-          <a href="#home" className="hover:text-purple-300 transition">Home</a>
-          <a href="#mywork" className="hover:text-purple-300 transition">My Work</a>
-          <a href="#contact" className="hover:text-purple-300 transition">Contact</a>
+          <Link to="/" className="hover:text-purple-300 transition">Home</Link>
+          <Link to="/mywork" className="hover:text-purple-300 transition">My Work</Link>
+          <Link to="/contact" className="hover:text-purple-300 transition">Contact</Link>
         </div>
 
         {/* Social Links */}
@@ -24,7 +25,7 @@ function Footer() {
           <a href="https://www.instagram.com/invites/contact/?utm_source=ig_contact_invite&utm_medium=copy_link&utm_content=tdcpvow" target="_blank" rel="noopener noreferrer" className="hover:text-purple-300">
             <FaInstagram size={20} />
           </a>
-          <a href="nwabethroseonuoha@gmail.com" className="hover:text-purple-300">
+          <a href="mailto:nwabethroseonuoha@gmail.com" className="hover:text-purple-300">
             <FaEnvelope size={20} />
           </a>
         </div>
