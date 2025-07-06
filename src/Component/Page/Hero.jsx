@@ -1,35 +1,66 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { ArrowRight, Zap } from 'lucide-react';
 
 function Hero() {
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    setIsVisible(true);
+  }, []);
+
   return (
-    <section className="bg-purple-700 text-white min-h-screen flex flex-col md:flex-row items-center justify-between px-6 md:px-16 py-12 gap-8">
-      
-    <div className="md:w-3/5 text-center md:text-left">
-        <h1 className="text-4xl sm:text-5xl font-bold mb-4">
-          Onuoha-Mba Bethel
-        </h1>
-        <p className="text-lg sm:text-xl max-w-2xl mb-6">
-          I'm a Creative Graphic Designer specializing in logos, flyers, and social media designs, offering services like brand identity development, print materials, digital graphics, infographics, and presentation design to help businesses and individuals create unique and effective visual content that increases brand visibility and online presence.
-        </p>
+    <section className="relative min-h-screen flex items-center justify-center">
+      {/* Simple Background */}
+      <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900"></div>
 
-        
-        <Link
-          to="/mywork"
-          className="inline-block bg-white text-purple-700 font-semibold px-6 py-3 rounded-full shadow hover:bg-purple-100 transition duration-300"
-        >
-          View My Work
-        </Link>
-      </div>
-
-      {/* Image Section with Zoom Effect */}
-      <div className="md:w-2/5 flex justify-center">
-        <div className="overflow-hidden rounded-lg shadow-lg transform transition duration-500 hover:scale-105">
-          <img
-            src="/b.JPG"
-            alt="Graphic Design Showcase"
-            className="w-full max-w-md h-auto object-cover"
-          />
+      <div className="relative z-10 max-w-6xl mx-auto px-8 py-20">
+        <div className="grid lg:grid-cols-2 gap-16 items-center">
+          {/* Content Section */}
+          <div className={`space-y-12 ${isVisible ? 'animate-slide-up' : 'opacity-0'}`}>
+            {/* Badge */}
+            <div className="inline-flex items-center space-x-3 glass px-6 py-3 rounded-full">
+              <Zap className="w-5 h-5 text-yellow-400" />
+              <span className="text-white/90 font-medium">Available for Projects</span>
+              <div className="w-3 h-3 bg-green-400 rounded-full animate-pulse"></div>
+            </div>
+            {/* Main Heading */}
+            <div className="space-y-6">
+              <h1 className="text-6xl lg:text-8xl font-bold font-display leading-tight">
+                <span className="block text-white mb-4">Creative</span>
+                <span className="block gradient-text">Designer</span>
+              </h1>
+              <div className="flex items-center space-x-6">
+                <div className="h-1 w-24 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full"></div>
+                <span className="text-2xl text-white/80 font-medium">Onuoha-Mba Bethel</span>
+              </div>
+            </div>
+            {/* Description */}
+            <p className="text-xl text-white/70 leading-relaxed max-w-lg">
+              I create stunning visual identities and designs that help businesses
+              connect with their audience through powerful storytelling.
+            </p>
+            {/* CTA Buttons */}
+            <div className="flex flex-col sm:flex-row gap-6">
+              <Link
+                to="/mywork"
+                className="group inline-flex items-center justify-center px-10 py-4 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full text-white font-semibold text-lg hover:from-blue-600 hover:to-purple-700 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-2xl"
+              >
+                <span>View My Work</span>
+                <ArrowRight className="ml-3 w-6 h-6 group-hover:translate-x-1 transition-transform duration-300" />
+              </Link>
+              <Link
+                to="/contact"
+                className="group inline-flex items-center justify-center px-10 py-4 glass rounded-full text-white font-semibold text-lg hover:glass-dark transition-all duration-300 border border-white/20"
+              >
+                <span>Contact</span>
+              </Link>
+            </div>
+          </div>
+          {/* Hero Image Placeholder */}
+          <div className="flex justify-center items-center">
+            {/* You can add an image or illustration here if desired */}
+          </div>
         </div>
       </div>
     </section>

@@ -1,18 +1,18 @@
 import React from 'react';
 import Header from './page/Header';
 import Hero from './page/Hero';
-import Contact from './page/Contact';
+import Features from './page/Features';
 import Footer from './page/Footer';
 
 const Body = () => {
   return (
-    <div>
+    <div className="min-h-screen">
       <Header />
       <Hero />
-      <Contact />
+      <Features />
       <Footer />
     </div>
   );
 };
 
-export default Body ;
+export default Body;
