@@ -41,7 +41,7 @@ function Features() {
 
   const stats = [
     { value: '50+', label: 'Projects' },
-    { value: '5+', label: 'Years' },
+    { value: '2+', label: 'Years' },
     { value: '25+', label: 'Clients' }
   ];
 

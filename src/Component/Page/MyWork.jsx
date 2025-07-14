@@ -11,13 +11,13 @@ function MyWork() {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    setTimeout(() => setIsLoading(false), 800);
+    setTimeout(() => setIsLoading(false), 600);
   }, []);
 
   const filteredDesigns = GRAPHIC_DESIGNS.filter(item => {
     const matchesCategory = selectedCategory === 'All' || item.category === selectedCategory;
-    const matchesSearch = item.title?.toLowerCase().includes(searchTerm.toLowerCase()) || 
-                         item.description?.toLowerCase().includes(searchTerm.toLowerCase());
+    const matchesSearch = item.title?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                          item.description?.toLowerCase().includes(searchTerm.toLowerCase());
     return matchesCategory && matchesSearch;
   });
 
@@ -42,10 +42,10 @@ function MyWork() {
 
   if (isLoading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
+      <div className="min-h-screen flex items-center justify-center bg-purple-800">
         <div className="text-center space-y-6">
-          <div className="spinner mx-auto"></div>
-          <p className="text-white/70 text-lg">Loading portfolio...</p>
+          <div className="spinner mx-auto" />
+          <p className="text-white text-lg">Loading portfolio...</p>
         </div>
       </div>
     );
@@ -54,161 +54,96 @@ function MyWork() {
   return (
     <>
       <Header />
-      <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 pt-32">
-        
-        {/* Hero Section - More Spacious */}
-        <div className="py-24 px-8">
-          <div className="max-w-6xl mx-auto text-center space-y-12">
-            <h1 className="text-6xl lg:text-8xl font-bold font-display">
-              <span className="block text-white mb-4">My</span>
-              <span className="block gradient-text">Portfolio</span>
-            </h1>
-            <p className="text-xl text-white/70 max-w-2xl mx-auto leading-relaxed">
-              Explore my collection of creative designs and visual solutions.
-            </p>
-          </div>
-        </div>
+      <div className="min-h-screen bg-white text-purple-900 pt-28">
 
-        {/* Search and Filter - Cleaner Layout */}
-        <div className="px-8 mb-16">
-          <div className="max-w-4xl mx-auto">
-            <div className="flex flex-col lg:flex-row gap-8 justify-center items-center">
-              
-              {/* Search Bar */}
-              <div className="relative">
-                <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-white/50" />
-                <input
-                  type="text"
-                  placeholder="Search designs..."
-                  value={searchTerm}
-                  onChange={(e) => setSearchTerm(e.target.value)}
-                  className="pl-12 pr-6 py-4 w-80 glass rounded-2xl text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-300"
-                />
-              </div>
+        {/* Search & Filters */}
+        <div className="max-w-5xl mx-auto px-4 mb-12 space-y-6">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+            {/* Search */}
+            <div className="relative w-full md:w-96">
+              <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-purple-400 w-5 h-5" />
+              <input
+                type="text"
+                placeholder="Search designs..."
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                className="w-full pl-12 pr-4 py-3 rounded-lg bg-white border border-purple-300 text-purple-900 placeholder-purple-400 focus:outline-none focus:ring-2 focus:ring-purple-500 transition"
+              />
+            </div>
 
-              {/* Category Filter */}
-              <div className="flex items-center space-x-4">
-                <Filter className="w-5 h-5 text-white/50" />
-                <div className="flex flex-wrap gap-3">
-                  {CATEGORIES.map((category) => (
-                    <button
-                      key={category}
-                      onClick={() => setSelectedCategory(category)}
-                      className={`px-6 py-3 rounded-2xl font-medium transition-all duration-300 ${
-                        selectedCategory === category
-                          ? 'bg-gradient-to-r from-blue-500 to-purple-600 text-white shadow-lg'
-                          : 'glass text-white/80 hover:text-white hover:glass-dark'
-                      }`}
-                    >
-                      {category}
-                    </button>
-                  ))}
-                </div>
-              </div>
+            {/* Filters */}
+            <div className="flex items-center gap-4 flex-wrap">
+              <Filter className="text-purple-400 w-5 h-5" />
+              {CATEGORIES.map((cat) => (
+                <button
+                  key={cat}
+                  onClick={() => setSelectedCategory(cat)}
+                  className={`px-5 py-2 rounded-full text-sm font-medium border transition-all ${
+                    selectedCategory === cat
+                      ? 'bg-purple-600 text-white border-purple-600'
+                      : 'border-purple-300 text-purple-700 hover:bg-purple-100'
+                  }`}
+                >
+                  {cat}
+                </button>
+              ))}
             </div>
           </div>
         </div>
 
-        {/* Portfolio Grid - Better Spacing */}
-        <div className="px-8 pb-24">
-          <div className="max-w-7xl mx-auto">
-            
-            {/* Results Count */}
-            <div className="mb-12 text-center">
-              <p className="text-white/60 text-lg">
-                {filteredDesigns.length} design{filteredDesigns.length !== 1 ? 's' : ''} found
-              </p>
-            </div>
-
-            {/* Grid with Better Spacing */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {/* Grid */}
+        <div className="max-w-6xl mx-auto px-6 pb-24">
+          {filteredDesigns.length > 0 ? (
+            <div className="grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
               {filteredDesigns.map((item, index) => (
                 <div
-                  key={item.id || index}
-                  className="group relative overflow-hidden rounded-3xl glass-dark hover:glass transition-all duration-500 hover:scale-105 cursor-pointer animate-fade-scale"
-                  style={{ animationDelay: `${index * 0.1}s` }}
+                  key={index}
                   onClick={() => openModal(index)}
+                  className="relative cursor-pointer rounded-xl overflow-hidden border border-purple-200 hover:border-purple-500 transition-transform transform hover:scale-[1.015] group bg-white shadow-md"
                 >
-                  {/* Image */}
-                  <div className="relative overflow-hidden">
-                    <img
-                      src={item.src}
-                      alt={item.title || `${item.category} design`}
-                      className="w-full h-80 object-cover transition-transform duration-700 group-hover:scale-110"
-                      loading="lazy"
-                    />
-                    
-                    {/* Simple Overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                      <div className="absolute bottom-6 left-6 right-6">
-                        <h3 className="text-white font-semibold text-xl mb-2">{item.title}</h3>
-                        <p className="text-white/80">{item.description}</p>
-                      </div>
-                    </div>
+                  <img
+                    src={item.src}
+                    alt={item.title}
+                    className="w-full h-72 object-cover transition-transform duration-500 group-hover:scale-110"
+                  />
+                  <div className="absolute bottom-0 w-full bg-gradient-to-t from-purple-900/80 to-transparent p-4">
+                    <h3 className="text-white font-semibold">{item.title}</h3>
+                    <p className="text-white/80 text-sm">{item.description}</p>
                   </div>
-
-                  {/* Category Badge */}
-                  <div className="absolute top-6 left-6">
-                    <span className="px-4 py-2 bg-gradient-to-r from-blue-500 to-purple-600 text-white text-sm font-medium rounded-full">
-                      {item.category}
-                    </span>
-                  </div>
+                  <span className="absolute top-4 left-4 bg-purple-600 text-xs px-3 py-1 rounded-full text-white font-medium">
+                    {item.category}
+                  </span>
                 </div>
               ))}
             </div>
-
-            {/* No Results */}
-            {filteredDesigns.length === 0 && (
-              <div className="text-center py-24">
-                <div className="text-8xl mb-8">🎨</div>
-                <h3 className="text-3xl font-bold text-white mb-4">No designs found</h3>
-                <p className="text-white/60 text-lg">Try adjusting your search or filter criteria</p>
-              </div>
-            )}
-          </div>
+          ) : (
+            <div className="text-center py-24 space-y-4">
+              <div className="text-7xl">🎨</div>
+              <h2 className="text-2xl font-semibold">No designs found</h2>
+              <p className="text-purple-500">Try adjusting your search or category filter.</p>
+            </div>
+          )}
         </div>
 
-        {/* Modal - Cleaner Design */}
+        {/* Modal */}
         {isModalOpen && (
-          <div className="fixed inset-0 bg-black/90 backdrop-blur-sm z-50 flex items-center justify-center p-8">
-            <div className="relative max-w-6xl max-h-full">
-              
-              {/* Close Button */}
-              <button
-                onClick={closeModal}
-                className="absolute top-6 right-6 z-10 p-3 glass rounded-full text-white hover:glass-dark transition-all duration-300"
-              >
-                <X className="w-6 h-6" />
-              </button>
-
-              {/* Navigation Buttons */}
-              <button
-                onClick={prevImage}
-                className="absolute left-6 top-1/2 transform -translate-y-1/2 z-10 p-4 glass rounded-full text-white hover:glass-dark transition-all duration-300"
-              >
-                <ChevronLeft className="w-6 h-6" />
-              </button>
-
-              <button
-                onClick={nextImage}
-                className="absolute right-6 top-1/2 transform -translate-y-1/2 z-10 p-4 glass rounded-full text-white hover:glass-dark transition-all duration-300"
-              >
-                <ChevronRight className="w-6 h-6" />
-              </button>
-
-              {/* Image */}
-              <img
-                src={filteredDesigns[currentImageIndex]?.src}
-                alt={filteredDesigns[currentImageIndex]?.title || 'Design work'}
-                className="max-w-full max-h-full object-contain rounded-3xl"
-              />
-
-              {/* Image Info */}
-              <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 glass px-8 py-4 rounded-full">
-                <p className="text-white text-center font-medium">
-                  {currentImageIndex + 1} / {filteredDesigns.length}
-                </p>
-              </div>
+          <div className="fixed inset-0 z-50 bg-black/90 flex items-center justify-center p-6">
+            <button onClick={closeModal} className="absolute top-6 right-6 text-white hover:text-red-500">
+              <X className="w-6 h-6" />
+            </button>
+            <button onClick={prevImage} className="absolute left-6 top-1/2 -translate-y-1/2 text-white hover:text-purple-300">
+              <ChevronLeft className="w-8 h-8" />
+            </button>
+            <img
+              src={filteredDesigns[currentImageIndex]?.src}
+              alt={filteredDesigns[currentImageIndex]?.title}
+              className="max-h-[80vh] rounded-lg object-contain shadow-lg"
+            />
+            <button onClick={nextImage} className="absolute right-6 top-1/2 -translate-y-1/2 text-white hover:text-purple-300">
+              <ChevronRight className="w-8 h-8" />
+            </button>
+            <div className="absolute bottom-6 left-1/2 -translate-x-1/2 text-sm text-white/70">
+              {currentImageIndex + 1} of {filteredDesigns.length}
             </div>
           </div>
         )}

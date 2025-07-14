@@ -11,9 +11,16 @@ function Hero() {
 
   return (
     <section className="relative min-h-screen flex items-center justify-center">
-      {/* Simple Background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900"></div>
-
+      {/* Background Image */}
+      <div className="absolute inset-0">
+        <img
+          src="/eye.jpeg"
+          alt="Background Eye"
+          className="w-full h-full object-cover object-center opacity-40"
+          style={{ zIndex: 0 }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 opacity-80"></div>
+      </div>
       <div className="relative z-10 max-w-6xl mx-auto px-8 py-20">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* Content Section */}

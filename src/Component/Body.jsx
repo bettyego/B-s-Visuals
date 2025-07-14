@@ -3,6 +3,7 @@ import Header from './page/Header';
 import Hero from './page/Hero';
 import Features from './page/Features';
 import Footer from './page/Footer';
+import CTA from './page/CTA';
 
 const Body = () => {
   return (
@@ -10,6 +11,7 @@ const Body = () => {
       <Header />
       <Hero />
       <Features />
+      <CTA />
       <Footer />
     </div>
   );
